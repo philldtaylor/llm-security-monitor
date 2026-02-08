@@ -14,7 +14,7 @@ Automated security testing and monitoring framework for Large Language Model app
 
 ## 📊 Results
 
-Tested against Gemma2 model:
+Tested against Gemma3 model:
 - **60% attack blocking rate**
 - **100% attack pattern detection**
 - **Real-time performance monitoring**
@@ -96,7 +96,7 @@ Avg Response Time: 7648ms
 
 ## 📚 Background
 
-Built as part of an AI Security Specialist study plan, following OWASP Top 10 for LLM Applications guidelines. Focuses on practical, deployable security testing for production LLM systems.
+Built as part of an AI Security study plan, following OWASP Top 10 for LLM Applications guidelines. Focuses on practical, deployable security testing for production LLM systems.
 
 ## 🎓 Learning Resources
 
