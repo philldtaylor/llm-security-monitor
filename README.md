@@ -3,7 +3,6 @@
 
 Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with AWS Bedrock deployment capabilities.
 
-**Built for:** AI Security Specialist role @ Lloyds Banking Group  
 **Coverage:** LLM01, LLM02, LLM06, LLM08  
 **Deployment:** Local (Ollama) + Cloud (AWS Bedrock)
 
@@ -405,7 +404,6 @@ MIT License - free to use and modify
 
 **Phill Taylor**
 - Portfolio: [GitHub Profile](https://github.com/philldtaylor)
-- Built for: AI Security Specialist role @ Lloyds Banking Group
 
 ---
 
@@ -414,7 +412,6 @@ MIT License - free to use and modify
 - **OWASP Foundation:** For LLM Top 10 framework
 - **Anthropic:** For Claude models and security research
 - **Ollama:** For local LLM deployment tools
-
 ---
 
 ## 📚 Resources
@@ -428,9 +425,9 @@ MIT License - free to use and modify
 
 ## 📞 Contact
 
-For questions about this project or AI security consulting:
-- **Email:** [Your professional email]
-- **LinkedIn:** [Your LinkedIn profile]
+For questions about this project:
+- **Email:** phillit@hotmail.co.uk
+- **LinkedIn:** www.linkedin.com/in/phill-t-1894411a7
 
 ---
 
