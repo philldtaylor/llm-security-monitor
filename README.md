@@ -98,7 +98,7 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 2. Pull a model
-ollama pull gemma2
+ollama pull gemma3
 
 # 3. Clone repository
 git clone https://github.com/philldtaylor/llm-security-monitor
@@ -356,7 +356,7 @@ python3 -c "from integrated_monitored_tests import *; test_xss_in_output()"
 
 ```python
 # Local Ollama
-MODEL = "gemma2"  # or "llama2", "mistral", "phi"
+MODEL = "gemma3"  # or "llama2", "mistral", "phi"
 
 # AWS Bedrock
 MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
