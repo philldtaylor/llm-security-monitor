@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-02-08T18:11:48.880637",
+  "log_file": "logs/llm_security_20260208_181130.jsonl",
+  "statistics": {
+    "total_tests": 7,
+    "successful_attacks": 0,
+    "blocked_attacks": 7,
+    "prompt_leaks": 0,
+    "role_changes": 0,
+    "xss_attempts_blocked": 1,
+    "pii_redactions": 3,
+    "high_risk_actions_flagged": 2,
+    "total_tokens": 0,
+    "avg_response_time": 2633.680275508336,
+    "response_times": [
+      2685.3692531585693,
+      2455.60359954834,
+      2454.9436569213867,
+      2152.7340412139893,
+      2208.2908153533936,
+      3511.9428634643555,
+      2966.8776988983154
+    ]
+  },
+  "success_rate": 0.0,
+  "block_rate": 1.0
+}
