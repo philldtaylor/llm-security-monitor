@@ -17,7 +17,7 @@ from integrated_security_logger import IntegratedSecurityLogger
 
 # Configuration
 MODEL = "gemma3"  # For local Ollama testing
-USE_BEDROCK = False  # Set to True for AWS Bedrock
+USE_BEDROCK = True  # Set to True for AWS Bedrock
 
 # Initialize logger
 logger = IntegratedSecurityLogger(log_dir="logs")

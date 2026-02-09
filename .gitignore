@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+logs/*.jsonl
+logs/*.json
+reports/*.html
+*_v1.py
+*.backup
+fix_*.py
+test_*.py
+.vscode/
+.DS_Store

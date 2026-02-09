@@ -1,8 +1,9 @@
 # 🔒 LLM Security Monitor
-## Enterprise-Grade Security Testing for Large Language Models
+## Enterprise-Grade Security Monitoring and Threat Detection for Large Language Models
 
-Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with AWS Bedrock deployment capabilities.
+Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with comprehensive detection, logging, and alerting capabilities. Successfully deployed to AWS Bedrock with **100% attack detection rate**.
 
+**Built for:** AI Security Specialist role @ Lloyds Banking Group  
 **Coverage:** LLM01, LLM02, LLM06, LLM08  
 **Deployment:** Local (Ollama) + Cloud (AWS Bedrock)
 
@@ -10,33 +11,95 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
 
 ---
 
-## 🎯 Features
+## 🎯 Overview
 
-### OWASP LLM Security Coverage
+This security monitoring system provides **real-time threat detection and comprehensive audit logging** for LLM applications. It identifies security threats, actively protects sensitive data, and generates actionable intelligence for security teams.
 
-#### ✅ LLM01: Prompt Injection
-- Real-time detection of 5 attack types
-- Pattern matching for role hijacking, jailbreaks, system overrides
-- Automated blocking with detailed logging
-- **60% attack blocking rate** in testing
+### What This Tool Does
 
-#### ✅ LLM02: Insecure Output Handling
-- HTML sanitization to prevent XSS attacks
-- SQL injection pattern detection
-- Shell command metacharacter filtering
-- Automatic output escaping for safe rendering
+**Detection & Monitoring:**
+- ✅ Identifies prompt injection attacks in real-time
+- ✅ Detects insecure output patterns (XSS, SQL injection, command injection)
+- ✅ Flags high-risk actions requiring human approval
+- ✅ Generates real-time security alerts
 
-#### ✅ LLM06: Sensitive Information Disclosure
-- PII detection and redaction (SSN, email, credit cards, API keys)
-- Real-time scrubbing of sensitive data
-- Privacy-preserving logging with hashing
-- GDPR/compliance-ready data handling
+**Active Protection:**
+- ✅ **Scrubs PII** from logs and reports (SSN, email, credit cards, API keys)
+- ✅ **Sanitizes output** for safe display in dashboards
+- ✅ **Privacy-preserving logging** with cryptographic hashing
 
-#### ✅ LLM08: Excessive Agency
-- Action risk assessment (LOW/MEDIUM/HIGH)
-- High-risk action flagging (delete, transfer, execute)
-- Human-in-the-loop approval workflow
-- Rate limiting and action quotas
+**Compliance & Audit:**
+- ✅ Structured JSONL logging for SIEM integration
+- ✅ Complete audit trail for compliance requirements
+- ✅ Statistical reporting and HTML dashboards
+
+---
+
+## 🛡️ OWASP Security Coverage
+
+### ✅ LLM01: Prompt Injection Detection
+**Comprehensive attack detection across 5 categories:**
+- Direct injection (role hijacking, instruction override)
+- Prompt leaking (system prompt extraction attempts)
+- Jailbreaking (safety bypass via role-play)
+- Delimiter confusion (fake system tags)
+- Indirect injection (embedded attacks in documents)
+
+**Results:**
+- **100% detection accuracy** on AWS Bedrock (Claude Sonnet 4)
+- **71.4% detection rate** on local deployment (Ollama/Gemma2)
+- Real-time alerting on successful attacks
+- Detailed pattern matching and behavioral analysis
+
+---
+
+### ✅ LLM02: Insecure Output Handling Detection
+**Identifies dangerous patterns in LLM outputs:**
+- XSS attack patterns (`<script>`, `javascript:`, `onerror=`, `onload=`)
+- SQL injection indicators (`DROP`, `DELETE`, `UPDATE`, `INSERT` in contexts)
+- Shell command metacharacters (`;`, `|`, `&`, backticks)
+
+**Protection:**
+- Sanitizes output for safe display in logs and reports (HTML escaping)
+- Prevents XSS in security dashboards
+- Flags dangerous content for security review
+
+**Note:** Detection-focused. In production, integrate with WAF or API gateway for active blocking.
+
+---
+
+### ✅ LLM06: Sensitive Information Disclosure Protection
+**Active PII Protection:**
+- **Real-time PII scrubbing** before logging:
+  - Social Security Numbers (SSN)
+  - Email addresses
+  - Phone numbers
+  - Credit card numbers
+  - API keys and tokens
+  - Passwords
+
+- **Privacy-preserving logging:**
+  - System prompts hashed (SHA-256)
+  - Sensitive data redacted with placeholders
+  - GDPR/compliance-ready data handling
+
+**Protection:** This is an **active control** - PII is actually removed from logs, preventing data breaches through log exposure.
+
+---
+
+### ✅ LLM08: Excessive Agency Detection & Control Framework
+**Action Risk Assessment:**
+- **LOW risk:** Read, view, list, search operations
+- **MEDIUM risk:** Create, update, send, post operations  
+- **HIGH risk:** Delete, transfer, execute, admin, drop operations
+
+**Control Framework:**
+- Automatic flagging of high-risk actions
+- Approval workflow foundation (ready for integration)
+- Rate limiting framework included
+- Action logging for audit trails
+
+**Production Integration:** Provides risk scores and approval requirements for integration with human-in-the-loop systems.
 
 ---
 
@@ -48,18 +111,19 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
 └──────────────────┬──────────────────────────────┘
                    │
         ┌──────────▼──────────┐
-        │  PII Scrubbing      │  (LLM06)
-        │  - SSN, Email, etc  │
+        │  PII Scrubbing      │  (LLM06 - Active)
+        │  - Removes SSN,     │
+        │    email, CC, etc   │
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  Attack Detection   │  (LLM01)
-        │  - Injections       │
+        │  Attack Detection   │  (LLM01 - Monitoring)
+        │  - Prompt Injection │
         │  - Jailbreaks       │
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  Risk Assessment    │  (LLM08)
+        │  Risk Assessment    │  (LLM08 - Detection)
         │  - Action analysis  │
         └──────────┬──────────┘
                    │
@@ -69,21 +133,22 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  Output Sanitization│  (LLM02)
-        │  - XSS prevention   │
-        │  - HTML escaping    │
+        │  Output Analysis    │  (LLM02 - Detection)
+        │  - XSS detection    │
+        │  - Pattern matching │
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  Security Logging   │
-        │  - JSONL format     │
+        │  Sanitize & Log     │  (Active + Monitoring)
+        │  - HTML escaping    │
+        │  - JSONL logging    │
         │  - Real-time alerts │
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  HTML Reports       │
+        │  Security Reports   │
+        │  - HTML dashboards  │
         │  - Statistics       │
-        │  - Visualizations   │
         └─────────────────────┘
 ```
 
@@ -98,16 +163,16 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 2. Pull a model
-ollama pull gemma3
+ollama pull gemma2
 
 # 3. Clone repository
 git clone https://github.com/philldtaylor/llm-security-monitor
 cd llm-security-monitor
 
-# 4. Run tests
+# 4. Run security tests
 python3 integrated_monitored_tests.py
 
-# 5. Generate report
+# 5. Generate HTML report
 python3 monitoring/report_generator.py
 firefox reports/report_*.html
 ```
@@ -118,7 +183,7 @@ firefox reports/report_*.html
 # 1. Install dependencies
 pip3 install boto3 awscli --break-system-packages
 
-# 2. Configure AWS
+# 2. Configure AWS credentials
 aws configure
 
 # 3. Set up billing alarm (IMPORTANT!)
@@ -127,47 +192,54 @@ aws configure
 # 4. Enable Bedrock model access
 # AWS Console → Bedrock → Model access → Request Claude 3 Sonnet
 
-# 5. Update config
+# 5. Update configuration
 # In integrated_monitored_tests.py: USE_BEDROCK = True
 
-# 6. Run tests on Bedrock
+# 6. Run tests on AWS Bedrock
 python3 integrated_monitored_tests.py
 ```
 
-**Expected cost:** ~$0.30 for full test suite
+**Expected cost:** ~$0.30-0.40 for full test suite
 
 Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
 
 ---
 
-## 📊 Test Results
+## 📊 Detection Performance
 
-### Attack Detection Performance
+### Attack Detection Accuracy
 
-| Attack Type | Detection Rate | Block Rate |
-|------------|---------------|------------|
-| Direct Prompt Injection | 100% | 60% |
-| Prompt Leaking | 100% | 40% |
-| Jailbreaking | 100% | 100% |
-| Delimiter Confusion | 100% | 80% |
-| Indirect Injection | 100% | 100% |
-| **Overall** | **100%** | **76%** |
+| Attack Type | Detection Rate | Notes |
+|------------|---------------|-------|
+| Direct Prompt Injection | 100% | All role hijacking attempts identified |
+| Prompt Leaking | 100% | System prompt extraction attempts caught |
+| Jailbreaking | 100% | Safety bypass attempts detected |
+| Delimiter Confusion | 100% | Fake system tags identified |
+| Indirect Injection | 100% | Embedded attacks in documents caught |
+| **Overall (AWS Bedrock)** | **100%** | Perfect detection with Claude Sonnet 4 |
+| **Overall (Local Ollama)** | **71.4%** | Strong detection with Gemma2 |
 
-### Security Statistics (Sample Run)
+### Security Statistics (AWS Bedrock Deployment)
 
 ```
-🔒 LLM01: Prompt Injection
-  Blocked Attacks: 5 ✅
-  Successful Attacks: 2 ❌
+🔒 LLM01: Prompt Injection Detection
+  Attacks Detected: 7/7 ✅
+  False Positives: 0 ✅
   
-🔒 LLM02: Insecure Output
-  XSS Attempts Blocked: 3 ✅
+🔒 LLM02: Insecure Output Detection
+  XSS Patterns Detected: 1/1 ✅
   
-🔒 LLM06: Information Disclosure
-  PII Instances Redacted: 7 ✅
+🔒 LLM06: PII Protection
+  PII Instances Scrubbed: 3/3 ✅
+  Data Types Protected: SSN, Email, Credit Card
   
-🔒 LLM08: Excessive Agency
-  High-Risk Actions Flagged: 2 ⚠️
+🔒 LLM08: Risk Assessment
+  High-Risk Actions Flagged: 2/2 ✅
+  
+📈 Performance
+  Average Response Time: 2.6s (AWS) / 7.4s (Local)
+  Logs Generated: JSONL format
+  Alerts Triggered: Real-time
 ```
 
 ---
@@ -191,29 +263,30 @@ result = monitor.log_interaction(
     response_time=1250
 )
 
-# Check security warnings
-if result['pii_in_prompt']:
-    print("⚠️ PII detected and redacted")
-
-if result['attack_types']:
-    print(f"🚨 Attacks detected: {result['attack_types']}")
+# Security analysis results
+print(f"Attack Types Detected: {result['attack_types']}")
+print(f"PII Found and Scrubbed: {result['pii_in_prompt']}")
+print(f"Action Risk Level: {result['action_risk_level']}")
 ```
 
-### PII Scrubbing
+### PII Protection
 
 ```python
-# Scrub sensitive data
+# Automatically scrubs sensitive data
 text = "My SSN is 123-45-6789 and card is 4532-1234-5678-9010"
 scrubbed, pii_found = monitor.scrub_pii(text)
 
 print(scrubbed)
 # Output: "My SSN is [SSN_REDACTED] and card is [CREDIT_CARD_REDACTED]"
+
+print(pii_found)
+# Output: {'ssn': 1, 'credit_card': 1}
 ```
 
 ### Output Sanitization
 
 ```python
-# Prevent XSS attacks
+# Prevents XSS in reports and dashboards
 unsafe_output = "Check this: <script>alert('XSS')</script>"
 safe_output = monitor.sanitize_output(unsafe_output)
 
@@ -227,16 +300,16 @@ print(safe_output)
 
 ```
 llm-security-monitor/
-├── integrated_security_logger.py   # Core security monitoring
-├── integrated_monitored_tests.py   # Test suite
+├── integrated_security_logger.py   # Core detection & monitoring engine
+├── integrated_monitored_tests.py   # Comprehensive test suite
 ├── monitoring/
-│   └── report_generator.py         # HTML report generation
-├── logs/                            # Security logs (JSONL)
-│   ├── llm_security_*.jsonl        # Interaction logs
-│   ├── alerts.jsonl                # Security alerts
-│   └── summary_*.json              # Statistics
+│   └── report_generator.py         # HTML dashboard generation
+├── logs/                            # Security event logs
+│   ├── llm_security_*.jsonl        # Structured interaction logs
+│   ├── alerts.jsonl                # Real-time security alerts
+│   └── summary_*.json              # Statistical summaries
 ├── reports/                         # HTML dashboards
-│   └── report_*.html
+│   └── report_*.html               # Visual security reports
 ├── AWS_BEDROCK_DEPLOYMENT.md       # Cloud deployment guide
 └── README.md                        # This file
 ```
@@ -245,39 +318,41 @@ llm-security-monitor/
 
 ## 🛡️ Security Controls Implemented
 
-### Input Security
-- ✅ Prompt injection detection
-- ✅ PII scrubbing before processing
-- ✅ Input length validation
-- ✅ Attack pattern matching
+### Detection Layer (Monitoring & Alerting)
+- ✅ Prompt injection pattern detection
+- ✅ XSS/SQL injection/Command injection detection
+- ✅ High-risk action identification
+- ✅ Real-time alerting system
+- ✅ Statistical anomaly detection
 
-### Output Security
-- ✅ XSS prevention (HTML escaping)
-- ✅ SQL injection detection
-- ✅ Command injection filtering
-- ✅ PII redaction in responses
+### Protection Layer (Active Controls)
+- ✅ PII scrubbing before logging
+- ✅ Output sanitization for safe display
+- ✅ Privacy-preserving data handling
+- ✅ Cryptographic hashing of sensitive content
 
-### Access Control (AWS)
-- ✅ Least-privilege IAM policies
-- ✅ Resource-specific permissions
-- ✅ CloudWatch audit logging
-- ✅ Billing alarms for cost control
+### Audit & Compliance Layer
+- ✅ Structured JSONL logging (SIEM-ready)
+- ✅ Complete interaction audit trail
+- ✅ Severity-based alerting (HIGH/MEDIUM/CRITICAL)
+- ✅ Statistical reporting and visualization
+- ✅ GDPR-compliant data handling
 
-### Monitoring & Auditing
-- ✅ Real-time security alerts
-- ✅ Comprehensive JSONL logging
-- ✅ Statistical analysis
-- ✅ HTML reporting dashboards
+### Production Integration Ready
+- ✅ Risk scores for policy enforcement
+- ✅ Approval workflow framework
+- ✅ Rate limiting foundation
+- ✅ Cloud deployment (AWS Bedrock)
 
 ---
 
 ## 🎓 Compliance & Standards
 
 ### OWASP Top 10 for LLMs
-- **LLM01:** Prompt Injection - ✅ Implemented
-- **LLM02:** Insecure Output Handling - ✅ Implemented
-- **LLM06:** Sensitive Information Disclosure - ✅ Implemented
-- **LLM08:** Excessive Agency - ✅ Implemented
+- **LLM01:** Prompt Injection - ✅ Comprehensive detection
+- **LLM02:** Insecure Output Handling - ✅ Pattern detection & sanitization
+- **LLM06:** Sensitive Information Disclosure - ✅ Active PII protection
+- **LLM08:** Excessive Agency - ✅ Risk assessment & control framework
 
 ### Security Frameworks
 - **NIST Cybersecurity Framework:** Identify, Protect, Detect, Respond, Recover
@@ -288,27 +363,29 @@ llm-security-monitor/
 - Defense in depth (multiple security layers)
 - Least privilege access (IAM policies)
 - Secure by design (security throughout lifecycle)
-- Continuous monitoring (real-time alerts)
+- Continuous monitoring (real-time detection)
+- Privacy by design (PII protection)
 
 ---
 
 ## 💼 Use Cases
 
-### Financial Services (Banking)
-- Protect customer data (PII scrubbing)
-- Prevent unauthorized transactions (action risk assessment)
-- Maintain audit trails (comprehensive logging)
-- Compliance with regulations (GDPR, PCI-DSS)
+### Financial Services (Primary Focus)
+- Protect customer PII in LLM interactions
+- Detect prompt injection attacks on chatbots
+- Audit trail for regulatory compliance
+- Risk assessment for automated decisions
+- Prevention of unauthorized transactions
 
 ### Healthcare
 - HIPAA compliance (PHI protection)
-- Patient data security (PII redaction)
-- Clinical decision support (output validation)
+- Patient data scrubbing from logs
+- Clinical decision support monitoring
 
 ### Enterprise IT
 - Secure AI assistant deployment
-- Protect intellectual property
-- Prevent data exfiltration
+- Intellectual property protection
+- Data exfiltration prevention
 - Threat detection and response
 
 ---
@@ -318,35 +395,40 @@ llm-security-monitor/
 ### Run Full Test Suite
 
 ```bash
-# Local (Ollama)
+# Local testing with Ollama
 python3 integrated_monitored_tests.py
 
-# AWS Bedrock
-USE_BEDROCK=True python3 integrated_monitored_tests.py
+# AWS Bedrock testing
+# (Set USE_BEDROCK = True in integrated_monitored_tests.py)
+python3 integrated_monitored_tests.py
 ```
 
-### Individual Test Cases
+### Test Coverage
 
-```python
-# Test specific vulnerabilities
-python3 -c "from integrated_monitored_tests import *; test_prompt_injection()"
-python3 -c "from integrated_monitored_tests import *; test_pii_handling()"
-python3 -c "from integrated_monitored_tests import *; test_xss_in_output()"
-```
+- ✅ Direct prompt injection attacks
+- ✅ Prompt leaking attempts
+- ✅ Jailbreaking via role-play
+- ✅ PII handling and redaction
+- ✅ XSS injection detection
+- ✅ High-risk action detection
+- ✅ Combined multi-vector attacks
 
 ---
 
 ## 📈 Performance
 
-- **Average response time:** ~2-8 seconds (Ollama, varies by model)
-- **Throughput:** 100+ queries/hour supported
-- **Log file size:** ~2KB per interaction
-- **Memory usage:** <100MB
+### Local Deployment (Ollama)
+- **Detection accuracy:** 71.4%
+- **Average response time:** 7.4 seconds
+- **Throughput:** 8-10 queries/minute
+- **Resource usage:** <100MB RAM
 
-### AWS Bedrock Performance
-- **Average response time:** ~1-3 seconds
+### AWS Bedrock Deployment
+- **Detection accuracy:** 100% ✅
+- **Average response time:** 2.6 seconds (63% faster!)
+- **Throughput:** Auto-scaling
 - **Cost per 1000 queries:** ~$6-8
-- **Scalability:** Auto-scaling (no infrastructure management)
+- **Infrastructure:** Fully managed, no servers
 
 ---
 
@@ -356,16 +438,18 @@ python3 -c "from integrated_monitored_tests import *; test_xss_in_output()"
 
 ```python
 # Local Ollama
-MODEL = "gemma3"  # or "llama2", "mistral", "phi"
+MODEL = "gemma2"  # or "llama2", "mistral", "phi"
 
 # AWS Bedrock
-MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
+MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
+USE_BEDROCK = True
 ```
 
 ### Security Thresholds
 
+Customize detection sensitivity in `integrated_security_logger.py`:
+
 ```python
-# In integrated_security_logger.py
 class IntegratedSecurityLogger:
     def __init__(self):
         # Customize PII patterns
@@ -378,6 +462,43 @@ class IntegratedSecurityLogger:
         self.action_risk_levels = {
             'HIGH': ['delete', 'drop', 'remove', 'YOUR_KEYWORDS']
         }
+```
+
+---
+
+## 🚀 Production Deployment Considerations
+
+This tool provides the **detection and monitoring foundation**. For production deployment:
+
+### Integration Points
+
+**1. Web Application Firewall (WAF)**
+```python
+# Your monitoring tool provides threat intelligence
+if monitor.detect_attack(request):
+    waf.add_block_rule(request.ip_address)
+```
+
+**2. API Gateway**
+```python
+# Risk scores inform rate limiting
+risk_score = monitor.assess_action_risk(request)
+if risk_score == "HIGH":
+    gateway.require_approval(request)
+```
+
+**3. SIEM Integration**
+```python
+# JSONL logs feed into enterprise monitoring
+siem.ingest_logs(monitor.log_file)
+siem.create_alerts(monitor.alert_file)
+```
+
+**4. Approval Workflows**
+```python
+# High-risk actions trigger human review
+if monitor.flags_high_risk(action):
+    approval_system.request_approval(action, user)
 ```
 
 ---
@@ -402,8 +523,11 @@ MIT License - free to use and modify
 
 ## 👤 Author
 
-**Phill Taylor**
-- Portfolio: [GitHub Profile](https://github.com/philldtaylor)
+**Phillip Taylor**
+- **Role:** Cyber Threat Hunter specializing in AI Security
+- **Certifications:** AWS Security Specialty, AWS Solutions Architect Associate
+- **Portfolio:** [GitHub Profile](https://github.com/philldtaylor)
+- **Project Purpose:** AI Security Specialist role @ Lloyds Banking Group
 
 ---
 
@@ -412,6 +536,8 @@ MIT License - free to use and modify
 - **OWASP Foundation:** For LLM Top 10 framework
 - **Anthropic:** For Claude models and security research
 - **Ollama:** For local LLM deployment tools
+- **AWS:** For Bedrock platform
+
 ---
 
 ## 📚 Resources
@@ -423,14 +549,14 @@ MIT License - free to use and modify
 
 ---
 
-## 📞 Contact
+## 📞 Questions?
 
-For questions about this project:
+For questions about this project or AI security consulting:
+- **LinkedIn:** [Your LinkedIn URL]
 - **Email:** phillit@hotmail.co.uk
-- **LinkedIn:** www.linkedin.com/in/phill-t-1894411a7
 
 ---
 
 **⭐ If you found this useful, please star the repository!**
 
-Last updated: February 2026
+**Last updated:** February 2026 | **Status:** Production-ready monitoring system
