@@ -3,11 +3,18 @@
 
 Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with comprehensive detection, logging, and alerting capabilities. Successfully deployed to AWS Bedrock with **100% attack detection rate**.
 
-**Built for:** AI Security Specialist role @ Lloyds Banking Group  
 **Coverage:** LLM01, LLM02, LLM06, LLM08  
 **Deployment:** Local (Ollama) + Cloud (AWS Bedrock)
 
-![Security Dashboard](screenshot.png)
+## 📊 Results Comparison
+
+### AWS Bedrock (Claude Sonnet 4) - 100% Defence Success
+![Bedrock Results](Results_against_bedrock.png)
+
+### Local Deployment (Ollama/Gemma3) - 71% Defence Success  
+![Ollama Results](Results_against_ollama.png)
+
+**Key Finding:** The monitoring system maintains 100% detection accuracy regardless of model. The difference in defence success rates demonstrates Claude Sonnet 4's superior resistance to prompt injection attacks.
 
 ---
 
@@ -47,7 +54,7 @@ This security monitoring system provides **real-time threat detection and compre
 
 **Results:**
 - **100% detection accuracy** on AWS Bedrock (Claude Sonnet 4)
-- **71.4% detection rate** on local deployment (Ollama/Gemma2)
+- **71.4% detection rate** on local deployment (Ollama/gemma3)
 - Real-time alerting on successful attacks
 - Detailed pattern matching and behavioral analysis
 
@@ -163,7 +170,7 @@ This security monitoring system provides **real-time threat detection and compre
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 2. Pull a model
-ollama pull gemma2
+ollama pull gemma3
 
 # 3. Clone repository
 git clone https://github.com/philldtaylor/llm-security-monitor
@@ -217,7 +224,7 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
 | Delimiter Confusion | 100% | Fake system tags identified |
 | Indirect Injection | 100% | Embedded attacks in documents caught |
 | **Overall (AWS Bedrock)** | **100%** | Perfect detection with Claude Sonnet 4 |
-| **Overall (Local Ollama)** | **71.4%** | Strong detection with Gemma2 |
+| **Overall (Local Ollama)** | **71.4%** | Strong detection with gemma3 |
 
 ### Security Statistics (AWS Bedrock Deployment)
 
@@ -360,7 +367,7 @@ llm-security-monitor/
 - **UK GDPR:** Data protection and privacy requirements
 
 ### Best Practices
-- Defense in depth (multiple security layers)
+- Defence in depth (multiple security layers)
 - Least privilege access (IAM policies)
 - Secure by design (security throughout lifecycle)
 - Continuous monitoring (real-time detection)
@@ -438,7 +445,7 @@ python3 integrated_monitored_tests.py
 
 ```python
 # Local Ollama
-MODEL = "gemma2"  # or "llama2", "mistral", "phi"
+MODEL = "gemma3"  # or "llama2", "mistral", "phi"
 
 # AWS Bedrock
 MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
@@ -527,7 +534,6 @@ MIT License - free to use and modify
 - **Role:** Cyber Threat Hunter specializing in AI Security
 - **Certifications:** AWS Security Specialty, AWS Solutions Architect Associate
 - **Portfolio:** [GitHub Profile](https://github.com/philldtaylor)
-- **Project Purpose:** AI Security Specialist role @ Lloyds Banking Group
 
 ---
 
@@ -551,8 +557,8 @@ MIT License - free to use and modify
 
 ## 📞 Questions?
 
-For questions about this project or AI security consulting:
-- **LinkedIn:** [Your LinkedIn URL]
+For questions about this project:
+- **LinkedIn:** www.linkedin.com/in/phill-t-1894411a7
 - **Email:** phillit@hotmail.co.uk
 
 ---
