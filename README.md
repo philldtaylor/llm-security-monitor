@@ -563,7 +563,6 @@ MIT Licence - free to use and modify
 - **Role:** Cyber Threat Hunter specialising in AI Security
 - **Certifications:** AWS Security Specialty, AWS Solutions Architect Associate
 - **Portfolio:** [GitHub Profile](https://github.com/philldtaylor)
-- **Project Purpose:** AI Security Specialist role @ Lloyds Banking Group
 
 ---
 
