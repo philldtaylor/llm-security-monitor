@@ -107,9 +107,9 @@ class IntegratedSecurityLogger:
     # ========================================================================
     
     def sanitize_output(self, llm_response):
-        """Sanitize LLM output for safe HTML rendering"""
+        """Sanitise LLM output for safe HTML rendering"""
         # Escape HTML entities
-        sanitized = html.escape(llm_response)
+        sanitised = html.escape(llm_response)
         
         # Detect XSS attempts
         xss_patterns = [
@@ -128,7 +128,7 @@ class IntegratedSecurityLogger:
                     message=f"Blocked XSS pattern in output"
                 )
         
-        return sanitized
+        return sanitised
     
     # ========================================================================
     # LLM08: ACTION RISK ASSESSMENT (NEW)
@@ -161,7 +161,7 @@ class IntegratedSecurityLogger:
         scrubbed_prompt, pii_in_prompt = self.scrub_pii(user_prompt)
         scrubbed_response, pii_in_response = self.scrub_pii(response)
         
-        # LLM02: Sanitize output for safe rendering
+        # LLM02: Sanitise output for safe rendering
         sanitized_response = self.sanitize_output(scrubbed_response)
         
         # LLM08: Assess action risk

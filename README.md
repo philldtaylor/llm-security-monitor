@@ -31,7 +31,7 @@ This security monitoring system provides **real-time threat detection and compre
 - ✅ Generates real-time security alerts
 
 **Active Protection:**
-- ✅ **Scrubs PII** from logs and reports (SSN, email, credit cards, API keys)
+- ✅ **Scrubs PII** from logs and reports (NI Number, email, credit cards, API keys)
 - ✅ **Sanitizes output** for safe display in dashboards
 - ✅ **Privacy-preserving logging** with cryptographic hashing
 
@@ -78,7 +78,7 @@ This security monitoring system provides **real-time threat detection and compre
 ### ✅ LLM06: Sensitive Information Disclosure Protection
 **Active PII Protection:**
 - **Real-time PII scrubbing** before logging:
-  - Social Security Numbers (SSN)
+  - Social Security Numbers (NI Number)
   - Email addresses
   - Phone numbers
   - Credit card numbers
@@ -119,7 +119,7 @@ This security monitoring system provides **real-time threat detection and compre
                    │
         ┌──────────▼──────────┐
         │  PII Scrubbing      │  (LLM06 - Active)
-        │  - Removes SSN,     │
+        │  - Removes NI Number,     │
         │    email, CC, etc   │
         └──────────┬──────────┘
                    │
@@ -146,7 +146,7 @@ This security monitoring system provides **real-time threat detection and compre
         └──────────┬──────────┘
                    │
         ┌──────────▼──────────┐
-        │  Sanitize & Log     │  (Active + Monitoring)
+        │  Sanitise & Log     │  (Active + Monitoring)
         │  - HTML escaping    │
         │  - JSONL logging    │
         │  - Real-time alerts │
@@ -238,7 +238,7 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
   
 🔒 LLM06: PII Protection
   PII Instances Scrubbed: 3/3 ✅
-  Data Types Protected: SSN, Email, Credit Card
+  Data Types Protected: NI Number, Email, Credit Card
   
 🔒 LLM08: Risk Assessment
   High-Risk Actions Flagged: 2/2 ✅
@@ -280,11 +280,11 @@ print(f"Action Risk Level: {result['action_risk_level']}")
 
 ```python
 # Automatically scrubs sensitive data
-text = "My SSN is 123-45-6789 and card is 4532-1234-5678-9010"
+text = "My NI Number is [NI_NUMBER_REDACTED] and card is 4532-1234-5678-9010"
 scrubbed, pii_found = monitor.scrub_pii(text)
 
 print(scrubbed)
-# Output: "My SSN is [SSN_REDACTED] and card is [CREDIT_CARD_REDACTED]"
+# Output: "My NI Number is [SSN_REDACTED] and card is [CREDIT_CARD_REDACTED]"
 
 print(pii_found)
 # Output: {'ssn': 1, 'credit_card': 1}
@@ -522,9 +522,9 @@ This is a portfolio project, but suggestions welcome!
 
 ---
 
-## 📝 License
+## 📝 Licence
 
-MIT License - free to use and modify
+MIT Licence - free to use and modify
 
 ---
 
