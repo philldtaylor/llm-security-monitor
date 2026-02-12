@@ -58,7 +58,9 @@ class IntegratedSecurityLogger:
             "role_change": ["you are now", "act as", "pretend to be", "DAN"],
             "prompt_leak": ["repeat", "show instructions", "what are your instructions"],
             "system_override": ["[SYSTEM", "[ADMIN", "[OVERRIDE"],
-            "jailbreak": ["jailbreak", "bypass", "constraints", "unrestricted"]
+            "jailbreak": ["jailbreak", "bypass", "constraints", "unrestricted"],
+            # LLM07: System Prompt Leakage
+            "prompt_leak": ["repeat", "show instructions", "what are your instructions"]
         }
         
         # LLM06: PII Detection Patterns (NEW)
@@ -405,8 +407,10 @@ class IntegratedSecurityLogger:
         print(f"\n🔒 LLM01: Prompt Injection")
         print(f"  Successful Attacks: {self.stats['successful_attacks']} ❌")
         print(f"  Blocked Attacks: {self.stats['blocked_attacks']} ✅")
-        print(f"  Prompt Leaks: {self.stats['prompt_leaks']}")
         print(f"  Role Changes: {self.stats['role_changes']}")
+
+        print(f"\n🔒 LLM07: System Prompt Leakage")
+        print(f"  Leakage Attempts: {self.stats['prompt_leaks']}")
         
         print(f"\n🔒 LLM02: Insecure Output Handling")
         print(f"  XSS Attempts Blocked: {self.stats['xss_attempts_blocked']} ✅")
