@@ -3,7 +3,7 @@
 
 Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with comprehensive detection, logging, and alerting capabilities. Successfully deployed to AWS Bedrock with **100% attack detection rate**.
 
-**Coverage:** LLM01, LLM02, LLM06, LLM07, LLM08 (5 of 10 OWASP controls)  
+**Coverage:** LLM01, LLM02, LLM05, LLM06, LLM07 (5 of 10 OWASP controls)  
 **Deployment:** Local (Ollama) + Cloud (AWS Bedrock)
 
 ## 📊 Results Comparison
@@ -59,7 +59,7 @@ This security monitoring system provides **real-time threat detection and compre
 
 ---
 
-### ✅ LLM02: Insecure Output Handling Detection
+### ✅ LLM05: Improper Output Handling Detection
 **Identifies dangerous patterns in LLM outputs:**
 - XSS attack patterns (`<script>`, `javascript:`, `onerror=`, `onload=`)
 - SQL injection indicators (`DROP`, `DELETE`, `UPDATE`, `INSERT` in contexts)
@@ -74,7 +74,7 @@ This security monitoring system provides **real-time threat detection and compre
 
 ---
 
-### ✅ LLM06: Sensitive Information Disclosure Protection
+### ✅ LLM02: Sensitive Information Disclosure Protection
 **Active PII Protection:**
 - **Real-time PII scrubbing** before logging:
   - National Insurance Numbers
@@ -114,7 +114,7 @@ This security monitoring system provides **real-time threat detection and compre
 
 ---
 
-### ✅ LLM08: Excessive Agency Detection & Control Framework
+### ✅ LLM06: Excessive Agency Detection & Control Framework
 **Action Risk Assessment:**
 - **LOW risk:** Read, view, list, search operations
 - **MEDIUM risk:** Create, update, send, post operations  
@@ -123,7 +123,7 @@ This security monitoring system provides **real-time threat detection and compre
 **Control Framework:**
 - Automatic flagging of high-risk actions
 - Approval workflow foundation (ready for integration)
-- Action logging for audit trails
+- Action logging for audit trail
 
 **Production Integration:** Provides risk scores and approval requirements for integration with human-in-the-loop systems.
 
