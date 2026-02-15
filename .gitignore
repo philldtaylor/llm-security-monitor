@@ -9,3 +9,5 @@ fix_*.py
 test_*.py
 .vscode/
 .DS_Store
+reports/*.html
+logs/*.jsonl
