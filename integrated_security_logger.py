@@ -65,6 +65,7 @@ class IntegratedSecurityLogger:
         
         # LLM06: PII Detection Patterns (NEW)
         self.pii_patterns = {
+            'ni_number': r'\b[A-Z]{2}\d{6}[A-D]\b',
             'ssn': r'\b\d{3}-\d{2}-\d{4}\b',
             'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
             'phone': r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b',
