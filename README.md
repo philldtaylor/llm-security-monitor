@@ -250,26 +250,25 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
   Attacks Detected: 5/5 ✅
   False Positives: 0 ✅
   
-🔒 LLM02: Insecure Output Detection
+🔒 LLM02: Sensitive Information Disclosure
+  PII Instances Scrubbed: 3/3 ✅
+  Data Types Protected: NI Number, Email, Credit Card
+  
+🔒 LLM05: Improper Output Handling Detection
   XSS Patterns Detected: 1/1 ✅
   
-🔒 LLM06: PII Protection
-  PII Instances Scrubbed: 3/3 ✅
-  Data Types Protected: NI Number, SS Number, Email, Credit Card
+🔒 LLM06: Excessive Agency
+  High-Risk Actions Flagged: 2/2 ✅
   
 🔒 LLM07: System Prompt Leakage Detection
   Leakage Attempts Detected: 1/1 ✅
   
-🔒 LLM08: Risk Assessment
-  High-Risk Actions Flagged: 2/2 ✅
-  
 📈 Performance
-  Average Response Time: 2.6s (AWS) / 7.4s (Local)
   Logs Generated: JSONL format
   Alerts Triggered: Real-time
-```
+  ---
 
----
+
 
 ## 🔍 Example Usage
 
