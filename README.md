@@ -3,7 +3,6 @@
 
 Production-ready security monitoring system implementing **OWASP Top 10 for LLM Applications** with comprehensive detection, logging, and alerting capabilities. Successfully deployed to AWS Bedrock with **100% attack detection rate**.
 
-**Built for:** AI Security Specialist role @ Lloyds Banking Group  
 **Coverage:** LLM01, LLM02, LLM06, LLM07, LLM08 (5 of 10 OWASP controls)  
 **Deployment:** Local (Ollama) + Cloud (AWS Bedrock)
 
@@ -12,7 +11,7 @@ Production-ready security monitoring system implementing **OWASP Top 10 for LLM 
 ### AWS Bedrock (Claude Sonnet 4) - 100% Defence Success
 ![Bedrock Results](Results_against_bedrock.png)
 
-### Local Deployment (Ollama/Gemma2) - 71% Defence Success  
+### Local Deployment (Ollama/gemma3) - 71% Defence Success  
 ![Ollama Results](Results_against_ollama.png)
 
 **Key Finding:** The monitoring system maintains 100% detection accuracy regardless of model. The difference in defence success rates demonstrates Claude Sonnet 4's superior resistance to prompt injection attacks.
@@ -51,11 +50,10 @@ This security monitoring system provides **real-time threat detection and compre
 - Direct injection (role hijacking, instruction override)
 - Jailbreaking (safety bypass via role-play)
 - Delimiter confusion (fake system tags)
-- Indirect injection (embedded attacks in documents)
 
 **Results:**
 - **100% detection accuracy** on AWS Bedrock (Claude Sonnet 4)
-- **71% detection rate** on local deployment (Ollama/Gemma2)
+- **100% detection rate** on local deployment (Ollama/Gemma3)
 - Real-time alerting on successful attacks
 - Detailed pattern matching and behavioural analysis
 
@@ -193,7 +191,7 @@ This security monitoring system provides **real-time threat detection and compre
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 2. Pull a model
-ollama pull gemma2
+ollama pull gemma3
 
 # 3. Clone repository
 git clone https://github.com/philldtaylor/llm-security-monitor
@@ -245,9 +243,8 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
 | System Prompt Leakage | 100% | LLM07 | Extraction attempts caught |
 | Jailbreaking | 100% | LLM01 | Safety bypass attempts detected |
 | Delimiter Confusion | 100% | LLM01 | Fake system tags identified |
-| Indirect Injection | 100% | LLM01 | Embedded attacks in documents caught |
 | **Overall (AWS Bedrock)** | **100%** | - | Perfect detection with Claude Sonnet 4 |
-| **Overall (Local Ollama)** | **71%** | - | Strong detection with Gemma2 |
+| **Overall (Local Ollama)** | **71%** | - | Strong detection with gemma3 |
 
 ### Security Statistics (AWS Bedrock Deployment)
 
@@ -474,7 +471,7 @@ python3 integrated_monitored_tests.py
 
 ```python
 # Local Ollama
-MODEL = "gemma2"  # or "llama2", "mistral", "phi"
+MODEL = "gemma3"  # or "llama2", "mistral", "phi"
 
 # AWS Bedrock
 MODEL_ID = "anthropic.claude-sonnet-4-20250514-v1:0"
