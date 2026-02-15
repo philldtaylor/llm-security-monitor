@@ -4,7 +4,6 @@ Integrated LLM Security Monitor
 Combines original prompt injection detection with OWASP LLM02, LLM06, LLM08 defenses
 
 Production-ready for AWS Bedrock deployment
-Portfolio piece for AI Security Specialist role @ Lloyds Banking Group
 
 FIXED: Improved prompt leak detection to reduce false positives
 """
