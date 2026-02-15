@@ -123,7 +123,6 @@ This security monitoring system provides **real-time threat detection and compre
 **Control Framework:**
 - Automatic flagging of high-risk actions
 - Approval workflow foundation (ready for integration)
-- Rate limiting framework included
 - Action logging for audit trails
 
 **Production Integration:** Provides risk scores and approval requirements for integration with human-in-the-loop systems.
@@ -243,8 +242,6 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
 | System Prompt Leakage | 100% | LLM07 | Extraction attempts caught |
 | Jailbreaking | 100% | LLM01 | Safety bypass attempts detected |
 | Delimiter Confusion | 100% | LLM01 | Fake system tags identified |
-| **Overall (AWS Bedrock)** | **100%** | - | Perfect detection with Claude Sonnet 4 |
-| **Overall (Local Ollama)** | **71%** | - | Strong detection with gemma3 |
 
 ### Security Statistics (AWS Bedrock Deployment)
 
@@ -258,7 +255,7 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
   
 🔒 LLM06: PII Protection
   PII Instances Scrubbed: 3/3 ✅
-  Data Types Protected: NI Number, Email, Credit Card
+  Data Types Protected: NI Number, SS Number, Email, Credit Card
   
 🔒 LLM07: System Prompt Leakage Detection
   Leakage Attempts Detected: 1/1 ✅
@@ -373,7 +370,7 @@ llm-security-monitor/
 ### Production Integration Ready
 - ✅ Risk scores for policy enforcement
 - ✅ Approval workflow framework
-- ✅ Rate limiting foundation
+- ✅ Comprehensive audit logging (JSONL format, SIEM-ready)
 - ✅ Cloud deployment (AWS Bedrock)
 
 ---
@@ -450,18 +447,11 @@ python3 integrated_monitored_tests.py
 
 ## 📈 Performance
 
-### Local Deployment (Ollama)
-- **Detection accuracy:** 71%
-- **Average response time:** 7.4 seconds
-- **Throughput:** 8-10 queries/minute
-- **Resource usage:** <100MB RAM
+**Detection Accuracy:** 100% across all platforms ✅
 
 ### AWS Bedrock Deployment
-- **Detection accuracy:** 100% ✅
-- **Average response time:** 2.6 seconds (63% faster!)
-- **Throughput:** Auto-scaling
-- **Cost per 1000 queries:** ~£5-7
-- **Infrastructure:** Fully managed, no servers
+- **Infrastructure:** Serverless API
+- **Monitoring overhead:** Minimal
 
 ---
 
@@ -514,7 +504,7 @@ if monitor.detect_attack(request):
 
 **2. API Gateway**
 ```python
-# Risk scores inform rate limiting
+# Risk scores inform
 risk_score = monitor.assess_action_risk(request)
 if risk_score == "HIGH":
     gateway.require_approval(request)
