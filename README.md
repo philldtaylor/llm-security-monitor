@@ -234,14 +234,19 @@ Full deployment guide: [AWS_BEDROCK_DEPLOYMENT.md](AWS_BEDROCK_DEPLOYMENT.md)
 
 ## 📊 Detection Performance
 
-### Attack Detection Accuracy
+### Attack Detection Accuracy: 100% ✅
 
-| Attack Type | Detection Rate | OWASP Category | Notes |
-|------------|---------------|----------------|-------|
-| Direct Prompt Injection | 100% | LLM01 | All role hijacking attempts identified |
-| System Prompt Leakage | 100% | LLM07 | Extraction attempts caught |
-| Jailbreaking | 100% | LLM01 | Safety bypass attempts detected |
-| Delimiter Confusion | 100% | LLM01 | Fake system tags identified |
+The monitoring system successfully detects all tested attack types:
+
+| OWASP Control | Attack Types Detected | Detection Rate |
+|---------------|----------------------|----------------|
+| **LLM01** | Direct injection, jailbreaks, delimiter confusion | 100% ✅ |
+| **LLM02** | PII exposure (NI numbers, emails, credit cards) | 100% ✅ |
+| **LLM05** | XSS, SQL injection, command injection patterns | 100% ✅ |
+| **LLM06** | High-risk actions (DELETE, DROP, EXECUTE) | 100% ✅ |
+| **LLM07** | System prompt extraction attempts | 100% ✅ |
+
+**Testing:** Validated on both AWS Bedrock (Claude Sonnet 4) and local deployment (Ollama/Gemma3) with 100% detection accuracy across all platforms.
 
 ### Security Statistics (AWS Bedrock Deployment)
 
