@@ -11,3 +11,6 @@ test_*.py
 .DS_Store
 reports/*.html
 logs/*.jsonl
+venv/
+britannify.py
+patch_reports.py
